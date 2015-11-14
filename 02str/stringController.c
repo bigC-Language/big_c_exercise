@@ -11,6 +11,12 @@
  void test_strncmp();
  void test_strcpy();
  void test_strncpy();
+ //void test_strlcpy();//不是ANSI标准
+ void test_sprintf();
+ void test_sscanf();
+ void test_strchr();
+ void test_strstr();
+ void test_strtok();
  void test_sizeof_strlen();
 int main(){
 	//test_aoti();
@@ -20,7 +26,14 @@ int main(){
 	//test_strncmp();
 	//test_strcpy();
 	//test_strncpy();
-	test_sizeof_strlen();
+	//test_sizeof_strlen();
+	//test_sprintf();
+
+	//test_sscanf();
+	//test_strchr();
+	
+	test_strstr();
+	test_strtok();
 	return 0;
 }
 //以下内容请删除并重现
@@ -80,6 +93,53 @@ void test_strncpy(){
 	strncpy(s2,s1,sizeof(s1) - 1);
 	s2[sizeof(s1) - 1] = 0;
 	printf("%s\n",s2);
+}
+/*字符串特殊赋值法
+ * 把其他类型拼接进入字符串里面
+ * */
+void test_sprintf(){
+	int i = 200;
+	char str[] = {0};
+	sprintf(str,"i = %d",i);
+	printf("str字符串的内容是'%s'\n",str);
+}
+/*
+ * 从字符串中提取出其他类型的数据
+ * */
+void test_sscanf(){
+	char str[] = "int i = 599";
+	int i;
+	sscanf(str,"int i = %d",&i);//注意，这里要用取地址符
+	printf("%d\n",i);
+}
+/*字符串截取*/
+void test_strchr(){
+	char str[] = "hello world";
+	char * res = strchr(str,'o');//用指针有什么意义？为何一定要用？
+	printf("%s\n",res);
+}
+/*字符串截取，抄录自文档*/
+void test_strstr(){
+   const char haystack[20] = "TutorialsYiibai";
+   const char needle[10] = "u";
+   char *ret;
+
+   ret = strstr(haystack, needle);
+
+   printf("The substring is: %s\n", ret);
+}
+/*字符串切割，注意使用方法*/
+void test_strtok(){
+
+        char s[] = "aaa bbb ccc ddd";  
+        char c[] = " ";  
+  
+        char *r = strtok(s, c);  
+  
+        while (r != NULL) {  
+                printf("%s\n", r);  
+                r = strtok(NULL, c);  
+        }  
 }
 /*sizeof和strlen的区别*/
 void test_sizeof_strlen(){
