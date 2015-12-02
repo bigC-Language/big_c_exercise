@@ -1,5 +1,8 @@
 #include <stdio.h>
 int getStrlen(char str[]);
+/*
+ * 使用指针获取字符串长度,不得使用数组下标
+ * */
 int main(){
 	char str[] = "hello world!";
 	int len = getStrlen(str);
@@ -7,9 +10,8 @@ int main(){
 	return 0;
 }
 int getStrlen(char str[]){
-	//int a = 0;
-	//int *len = &a;
-	//while(str[*len++]);
-	//return *len;
-	
+	char *p = str;
+	int len = 0;
+	while(*(p++))len++;
+	return len;	
 }
