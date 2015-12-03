@@ -47,7 +47,7 @@ int second_max(int arr[]){
 }
 int getStrlen(int arr[]){
 	int len = 0;
-	int *p = &arr[0];
+	int *p = arr;
 	while(*(p++))len++;
 	return len;
 }
