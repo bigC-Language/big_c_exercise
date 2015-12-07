@@ -19,4 +19,5 @@ int main(){
 	printf("sum=%d,avg=%d\n",sum,avg);
 	return 0;
 	//Q:怎么求没一列的和?
+	//A:需要重新循环,把i,j交换
 }
